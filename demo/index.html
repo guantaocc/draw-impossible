@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index html</title>
+  <style>
+    canvas {
+      width: 800px;
+      height: 600px;
+      border: 1px solid;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="800" height="600"></canvas>
+  <script type="module">
+    import Canvas  from '../src/index.js'
+    import { LinePoint } from '../src/objects/LinePoint.js'
+    const canvas = new Canvas(document.getElementById('canvas'));
+    
+
+    let startPoint = { x: 0, y: 0 }
+
+    const linePoint = new LinePoint({
+      startPoint: startPoint
+    })
+    let endPoint = { x: 0, y: 0 }
+    let ctx = canvas.contextContainer
+
+    // 捕获鼠标位置
+    document.addEventListener('mousedown', function(e){
+      console.log(e)
+      startPoint.x = e.clientX
+      startPoint.y = e.clientY
+      canvas.on('mouse:move', function(data){
+        linePoint.setStartPoint(startPoint)
+        let { left, top } = data
+        // 跟随鼠标移动扩展
+        endPoint.x = left
+        endPoint.y = top
+        linePoint.render(ctx, endPoint)
+        startPoint.x = endPoint.x
+        startPoint.y = endPoint.y
+        console.log('data', data)
+      })
+    })
+    
+    console.log(canvas, linePoint)
+  </script>
+</body>
+</html>

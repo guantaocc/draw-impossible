@@ -1,0 +1,32 @@
+{
+  "name": "draw-impossible",
+  "version": "1.0.0",
+  "description": "画板工具",
+  "main": "index.js",
+  "scripts": {
+    "dev": "",
+    "build": "rollup --config rollup.config.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guantaocc/draw-impossible.git"
+  },
+  "keywords": [
+    "画板",
+    "canvas"
+  ],
+  "author": "guantao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guantaocc/draw-impossible/issues"
+  },
+  "homepage": "https://github.com/guantaocc/draw-impossible#readme",
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/preset-env": "^7.19.0",
+    "rollup": "^2.79.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  }
+}
